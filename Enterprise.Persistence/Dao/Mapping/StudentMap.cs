@@ -9,6 +9,7 @@ namespace Enterprise.Persistence.Dao.Mapping
         {
             Map(student => student.FullName);
             Map(student => student.Birthday);
+
             References(student => student.Classroom).Cascade.None();
         }
     }

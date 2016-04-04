@@ -5,7 +5,7 @@ using Enterprise.Persistence.Dao;
 
 namespace Enterprise.Web.Services
 {
-    public class TeacherService
+    internal class TeacherService : ITeacherService
     {
         protected ITeacherDao TeacherDao { private get; set; }
         protected IClassroomDao ClassroomDao { private get; set; }
