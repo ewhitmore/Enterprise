@@ -6,7 +6,7 @@ namespace Enterprise.Web.Services
     public interface IStudentService
     {
         Student Get(int id);
-        List<Student> GetAll();
+        IList<Student> GetAll();
         void Save(Student student);
         void Update(Student student);
         void HardDelete(int id);

@@ -7,15 +7,15 @@ namespace Enterprise.Web.Services
 {
     internal class StudentService : IStudentService
     {
-        protected IStudentDao StudentDao { private get; set; }
-        protected IClassroomDao ClassroomDao { private get; set; }
+        public IStudentDao StudentDao { private get; set; }
+        public IClassroomDao ClassroomDao { private get; set; }
 
         public Student Get(int id)
         {
             return StudentDao.Get(id);
         }
 
-        public List<Student> GetAll()
+        public IList<Student> GetAll()
         {
             return StudentDao.GetAll().ToList();
         }

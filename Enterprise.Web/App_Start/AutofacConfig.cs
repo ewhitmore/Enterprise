@@ -59,11 +59,12 @@ namespace Enterprise.Web
         {
             builder.RegisterType<TeacherDao>().As<ITeacherDao>().PropertiesAutowired();
             builder.RegisterType<StudentDao>().As<IStudentDao>().PropertiesAutowired();
+            builder.RegisterType<ClassroomDao>().As<IClassroomDao>().PropertiesAutowired();
         }
 
         private static void AddServices(ContainerBuilder builder)
         {
-            var serviceAssembly = Assembly.GetAssembly(typeof(TeacherService));
+            var serviceAssembly = Assembly.GetAssembly(typeof(StudentService));
 
             builder.RegisterAssemblyTypes(serviceAssembly)
                 .Where(t => t.Name.EndsWith("Service"))
