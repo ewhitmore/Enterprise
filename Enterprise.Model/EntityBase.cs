@@ -7,7 +7,7 @@ namespace Enterprise.Model
         public virtual int Id { get; set; }
 
         public virtual bool IsDeleted { get; set; } = false;
-        public virtual DateTime CreatedAt { get; set; } = DateTime.Now.ToUniversalTime();
+        public virtual DateTime CreatedAt { get; set; } = DateTime.Now;
         public virtual DateTime ModifiedAt { get; set; }
 
         #region Methods

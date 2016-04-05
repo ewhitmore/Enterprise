@@ -2,6 +2,7 @@
 using System.Linq;
 using Enterprise.Model;
 using Enterprise.Persistence.Dao;
+using Enterprise.Web.Models;
 
 namespace Enterprise.Web.Services
 {
@@ -20,6 +21,16 @@ namespace Enterprise.Web.Services
             return StudentDao.GetAll().ToList();
         }
 
+        public IList<Student> FindAll()
+        {
+            return StudentDao.FindAll().ToList();
+        }
+
+        public IList<Student> GetActive()
+        {
+            return StudentDao.FindAll().Where(student => student.IsDeleted == false).ToList();
+        }
+
         public void Save(Student student)
         {
             StudentDao.Save(student);
@@ -28,6 +39,19 @@ namespace Enterprise.Web.Services
         public void Update(Student student)
         {
             StudentDao.Update(student);
+        }
+
+        public Student Update(StudentDto dto)
+        {
+
+            var student = StudentDao.Get(dto.Id);
+
+            student.FullName = dto.FullName;
+            student.Birthday = dto.Birthday;
+            
+            StudentDao.Update(student);
+
+            return student;
         }
 
         public void HardDelete(int id)

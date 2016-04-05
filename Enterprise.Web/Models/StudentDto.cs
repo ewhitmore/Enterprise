@@ -31,14 +31,14 @@ namespace Enterprise.Web.Models
         /// <returns></returns>
         public Student ToStudent()
         {
-            var student = new Student();
-            student.Birthday = this.Birthday;
-            student.FullName = this.FullName;
-            student.Id = this.Id;
+            var student = new Student
+            {
+                Birthday = Birthday,
+                FullName = FullName,
+                Id = Id
+            };
 
             return student;
         }
-
-
     }
 }

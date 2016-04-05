@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using NHibernate;
 using NHibernate.Linq;
@@ -60,7 +61,7 @@ namespace Enterprise.Persistence.Dao.Implementation
         public virtual void Save(TEntity entity)
         {
 
-            using (var tx = CurrentSession.BeginTransaction())
+            using (var tx = CurrentSession.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 CurrentSession.Save(entity);
 
@@ -86,7 +87,7 @@ namespace Enterprise.Persistence.Dao.Implementation
         /// <param name="entity"></param>
         public virtual void Update(TEntity entity)
         {
-            using (var tx = CurrentSession.BeginTransaction())
+            using (var tx = CurrentSession.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 CurrentSession.Update(entity);
 
@@ -95,7 +96,7 @@ namespace Enterprise.Persistence.Dao.Implementation
                     tx.Commit();
 
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
 
                     tx.Rollback();
