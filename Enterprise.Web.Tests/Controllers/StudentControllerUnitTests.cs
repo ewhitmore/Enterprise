@@ -261,6 +261,18 @@ namespace Enterprise.Web.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(BadRequestErrorMessageResult));
         }
 
+        [TestMethod]
+        public void StudentController_Delete_ReturnOk()
+        {
+            // Arrange
+            var mock = AutoMock.GetLoose();
+            var studentController = mock.Create<StudentController>(); // build up The service
 
+            // Act
+            IHttpActionResult result = studentController.Delete(1);  // Submit Dto and get back a IHttpActionResult
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(OkResult));
+        }
     }
 }
