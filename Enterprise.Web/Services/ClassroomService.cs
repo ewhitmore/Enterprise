@@ -2,7 +2,6 @@
 using System.Linq;
 using Enterprise.Model;
 using Enterprise.Persistence.Dao;
-using Enterprise.Persistence.Dao.Implementation;
 using Enterprise.Web.Models;
 
 namespace Enterprise.Web.Services
@@ -12,6 +11,14 @@ namespace Enterprise.Web.Services
         protected IClassroomDao ClassroomDao { private get;  set; }
         protected ITeacherDao TeacherDao { private get; set; }
         protected IStudentDao StudentDao { private get; set; }
+
+        // Required for unit testing
+        public ClassroomService(IClassroomDao classroomDao, ITeacherDao teacherDao, IStudentDao studentDao)
+        {
+            ClassroomDao = classroomDao;
+            TeacherDao = teacherDao;
+            StudentDao = studentDao;
+        }
 
         public Classroom Get(int id)
         {

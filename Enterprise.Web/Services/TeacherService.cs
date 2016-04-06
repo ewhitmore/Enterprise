@@ -11,6 +11,13 @@ namespace Enterprise.Web.Services
         protected ITeacherDao TeacherDao { private get; set; }
         protected IClassroomDao ClassroomDao { private get; set; }
 
+        // Required for unit testings
+        public TeacherService(ITeacherDao teacherDao, IClassroomDao classroomDao)
+        {
+            TeacherDao = teacherDao;
+            ClassroomDao = classroomDao;
+        }
+
         public Teacher Get(int id)
         {
             return TeacherDao.Get(id);
