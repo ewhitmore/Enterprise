@@ -20,7 +20,6 @@ namespace Enterprise.Web.Tests.Controllers
         [TestInitialize]
         public void Init()
         {
-
             AutofacConfig.RegisterAutofac();
 
             _configuration = new HttpConfiguration
@@ -34,7 +33,6 @@ namespace Enterprise.Web.Tests.Controllers
         {
             _configuration.Dispose();
         }
-
 
         [TestMethod]
         public void StudentController_Get_1_ReturnsStudent()
