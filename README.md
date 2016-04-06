@@ -24,4 +24,5 @@ Enterprise Stack - No Security Implementation
 
 ## Notes
 * Things to play with
- * http://type.litesolutions.net/
+ * C# DTOs to Typescript Classes - http://type.litesolutions.net/
+ * AutoMapper for DAO to DTO Translations - http://automapper.org/
