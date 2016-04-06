@@ -16,7 +16,12 @@ Enterprise Stack - No Security Implementation
  * Font Awesome (Icon Framework)
  * Jasmine (Javascript/Typescript Testing Framework)
  
+## Todos
+* Setup Jasmine for Typescript/AngularJs
+* Client Side CRUD operations w/ testing 
+* Setup Unit Tests for Persistance Layer (i.e. NHibernate Mappings/Operations)
  
+
 ## Notes
 * Things to play with
  * http://type.litesolutions.net/
