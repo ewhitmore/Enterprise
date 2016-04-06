@@ -96,7 +96,7 @@ namespace Enterprise.Persistence.Dao.Implementation
                     tx.Commit();
 
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
 
                     tx.Rollback();

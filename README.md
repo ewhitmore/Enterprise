@@ -17,3 +17,6 @@ Enterprise Stack - No Security Implementation
  * Jasmine (Javascript/Typescript Testing Framework)
  
  
+## Notes
+* Things to play with
+ * http://type.litesolutions.net/
