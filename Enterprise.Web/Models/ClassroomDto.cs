@@ -29,9 +29,11 @@ namespace Enterprise.Web.Models
             Id = classroom.Id;
             Name = classroom.Name;
             Desks = classroom.Desks;
-
             Teacher = new TeacherDto(classroom.Teacher);
+
+            // Convert Student objects to StudentDto objects
             Students = classroom.Students.Select(student => new StudentDto(student)).ToList();
+
         }
 
         /// <summary>
@@ -46,12 +48,12 @@ namespace Enterprise.Web.Models
                 Name = Name,
                 Desks = Desks,
                 Teacher = Teacher.ToTeacher(),
+
+                // Convert StudentDto objects to Student Objects
                 Students = Students.Select(studentDto => studentDto.ToStudent()).ToList()
             };
 
             return classroom;
         }
-
-
     }
 }

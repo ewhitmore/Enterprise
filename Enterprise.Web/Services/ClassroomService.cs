@@ -20,31 +20,39 @@ namespace Enterprise.Web.Services
             StudentDao = studentDao;
         }
 
+
         public Classroom Get(int id)
         {
             return ClassroomDao.Get(id);
         }
+
 
         public List<Classroom> GetAll()
         {
             return ClassroomDao.GetAll().ToList();
         }
 
-        public void Save(Classroom teacher)
+
+        public void Save(Classroom classroom)
         {
-            ClassroomDao.Save(teacher);
+            ClassroomDao.Save(classroom);
         }
 
-        public void Update(Classroom teacher)
+
+        public void Update(Classroom classroom)
         {
-            ClassroomDao.Update(teacher);
+            ClassroomDao.Update(classroom);
         }
+
 
         public Classroom Update(ClassroomDto dto)
         {
             var classroom = ClassroomDao.Get(dto.Id);
-            
-            // todo:  map dto to dao
+
+            classroom.Teacher = dto.Teacher.ToTeacher();
+            classroom.Students = dto.Students.Select(studentDto => studentDto.ToStudent()).ToList();
+            classroom.Desks = dto.Desks;
+            classroom.Name = dto.Name;
 
             ClassroomDao.Update(classroom);
 
@@ -55,6 +63,7 @@ namespace Enterprise.Web.Services
         {
             ClassroomDao.Delete(ClassroomDao.Get(id));
         }
+
 
         public void SoftDelete(int id)
         {

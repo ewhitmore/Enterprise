@@ -22,7 +22,7 @@ namespace Enterprise.Web
             // Register Controllers
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
 
-            // NHibernate
+            // Register NHibernate Factory
             builder.RegisterInstance(HibernateConfig.InitHibernate("Web"));
 
 
@@ -40,13 +40,16 @@ namespace Enterprise.Web
                 builder.Register(s => s.Resolve<ISessionFactory>().OpenSession());
             }
 
+            // Add Nhibernate Repository
             builder.RegisterGeneric(typeof(Repository<,>))
                 .As(typeof(IRepository<,>))
                 .PropertiesAutowired()
                 .InstancePerRequest();
 
-            // Services
+            // Add Services
             AddServices(builder);
+
+            // Add Types
             AddTypes(builder);
 
             // Set the dependency resolver to be Autofac.

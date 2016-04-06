@@ -26,16 +26,6 @@ namespace Enterprise.Web.Controllers
         }
 
         /// <summary>
-        /// Get active students
-        /// </summary>
-        /// <returns></returns>
-        //[Route("")]
-        //public IList<ClassroomDto> GetActive()
-        //{
-        //    return ClassroomService.GetActive().Select(student => new ClassroomDto(student)).ToList();
-        //}
-
-        /// <summary>
         /// Get all students including ones that have been deleted
         /// </summary>
         /// <returns></returns>
@@ -43,6 +33,7 @@ namespace Enterprise.Web.Controllers
         [HttpGet]
         public IList<ClassroomDto> GetAll()
         {
+
             return ClassroomService.GetAll().Select(classroom => new ClassroomDto(classroom)).ToList();
         }
 
