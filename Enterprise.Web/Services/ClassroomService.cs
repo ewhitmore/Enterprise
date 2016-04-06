@@ -2,6 +2,8 @@
 using System.Linq;
 using Enterprise.Model;
 using Enterprise.Persistence.Dao;
+using Enterprise.Persistence.Dao.Implementation;
+using Enterprise.Web.Models;
 
 namespace Enterprise.Web.Services
 {
@@ -29,6 +31,17 @@ namespace Enterprise.Web.Services
         public void Update(Classroom teacher)
         {
             ClassroomDao.Update(teacher);
+        }
+
+        public Classroom Update(ClassroomDto dto)
+        {
+            var classroom = ClassroomDao.Get(dto.Id);
+            
+            // todo:  map dto to dao
+
+            ClassroomDao.Update(classroom);
+
+            return classroom;
         }
 
         public void HardDelete(int id)

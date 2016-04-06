@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Enterprise.Model;
+using Enterprise.Web.Models;
 
 namespace Enterprise.Web.Services
 {
@@ -9,6 +10,7 @@ namespace Enterprise.Web.Services
         List<Classroom> GetAll();
         void Save(Classroom teacher);
         void Update(Classroom teacher);
+        Classroom Update(ClassroomDto dto);
         void HardDelete(int id);
         void SoftDelete(int id);
         void SetTeacher(int classroomId, int teacherId);

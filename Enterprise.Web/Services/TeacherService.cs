@@ -2,6 +2,7 @@
 using System.Linq;
 using Enterprise.Model;
 using Enterprise.Persistence.Dao;
+using Enterprise.Web.Models;
 
 namespace Enterprise.Web.Services
 {
@@ -28,6 +29,19 @@ namespace Enterprise.Web.Services
         public void Update(Teacher teacher)
         {
             TeacherDao.Update(teacher);
+        }
+
+        public Teacher Update(TeacherDto dto)
+        {
+
+            var teacher = TeacherDao.Get(dto.Id);
+
+            teacher.Birthday = dto.Birthday;
+            teacher.FullName = dto.FullName;
+
+            TeacherDao.Update(teacher);
+
+            return teacher;
         }
 
         public void HardDelete(int id)
