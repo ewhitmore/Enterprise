@@ -18,7 +18,6 @@ namespace Enterprise.Web.Services
             ClassroomDao = classroomDao;
         }
 
-
         public Student Get(int id)
         {
             return StudentDao.Get(id);

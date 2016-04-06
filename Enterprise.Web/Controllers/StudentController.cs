@@ -13,6 +13,12 @@ namespace Enterprise.Web.Controllers
     {
         public IStudentService StudentService { get; set; }
 
+        // Required for Unit Testing
+        public StudentController(IStudentService studentService)
+        {
+            StudentService = studentService;
+        }
+
         /// <summary>
         /// Get student by id
         /// </summary>
@@ -98,7 +104,6 @@ namespace Enterprise.Web.Controllers
             }
             catch (Exception exception)
             {
-
                 return InternalServerError(exception);
             }
 
