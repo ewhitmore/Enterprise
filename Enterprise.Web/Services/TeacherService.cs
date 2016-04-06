@@ -6,7 +6,7 @@ using Enterprise.Web.Models;
 
 namespace Enterprise.Web.Services
 {
-    internal class TeacherService : ITeacherService
+    public class TeacherService : ITeacherService
     {
         protected ITeacherDao TeacherDao { private get; set; }
         protected IClassroomDao ClassroomDao { private get; set; }

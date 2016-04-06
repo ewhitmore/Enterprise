@@ -41,6 +41,10 @@
       <HintPath>..\packages\Autofac.Extras.Moq.4.0.0\lib\net45\Autofac.Extras.Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
       <Private>True</Private>
@@ -123,6 +127,7 @@
     <Compile Include="Models\TeacherDtoUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Services\StudentServiceUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -135,11 +140,16 @@
       <Project>{C7FBD3F0-A731-4F27-AAC4-677A657A301A}</Project>
       <Name>Enterprise.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Enterprise.Persistence\Enterprise.Persistence.csproj">
+      <Project>{EA9DDCB0-CC6F-4F00-AA3B-F0EF98BF6F3F}</Project>
+      <Name>Enterprise.Persistence</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Enterprise.Web\Enterprise.Web.csproj">
       <Project>{FC89735B-C5F9-474A-95D6-DBD52EA32341}</Project>
       <Name>Enterprise.Web</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

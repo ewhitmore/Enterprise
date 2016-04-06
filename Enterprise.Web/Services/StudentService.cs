@@ -6,10 +6,18 @@ using Enterprise.Web.Models;
 
 namespace Enterprise.Web.Services
 {
-    internal class StudentService : IStudentService
+    public class StudentService : IStudentService
     {
         public IStudentDao StudentDao { private get; set; }
         public IClassroomDao ClassroomDao { private get; set; }
+
+        // required for unit testing
+        public StudentService(IStudentDao studentDao, IClassroomDao classroomDao)
+        {
+            StudentDao = studentDao;
+            ClassroomDao = classroomDao;
+        }
+
 
         public Student Get(int id)
         {
