@@ -7,6 +7,6 @@ namespace Enterprise.Model
         public virtual string Name { get; set; }
         public virtual int Desks { get; set; }
         public virtual Teacher Teacher { get; set; }
-        public virtual List<Student> Students { get; set; }
+        public virtual IList<Student> Students { get; set; }
     }
 }

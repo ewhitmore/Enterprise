@@ -9,7 +9,8 @@ namespace Enterprise.Persistence.Dao.Mapping
             Map(teacher => teacher.FullName);
             Map(teacher => teacher.Birthday);
 
-            References(teacher => teacher.Classroom);
+            //http://stackoverflow.com/questions/6085568/how-to-do-a-fluent-nhibernate-one-to-one-mapping
+            References(x => x.Classroom).Unique();
         }
     }
 }

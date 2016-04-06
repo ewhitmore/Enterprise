@@ -8,9 +8,9 @@ namespace Enterprise.Web.Services
 {
     public class ClassroomService : IClassroomService
     {
-        protected IClassroomDao ClassroomDao { private get;  set; }
-        protected ITeacherDao TeacherDao { private get; set; }
-        protected IStudentDao StudentDao { private get; set; }
+        public IClassroomDao ClassroomDao { private get;  set; }
+        public ITeacherDao TeacherDao { private get; set; }
+        public IStudentDao StudentDao { private get; set; }
 
         // Required for unit testing
         public ClassroomService(IClassroomDao classroomDao, ITeacherDao teacherDao, IStudentDao studentDao)

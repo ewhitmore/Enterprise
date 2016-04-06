@@ -10,8 +10,9 @@ namespace Enterprise.Persistence.Dao.Mapping
             Map(classroom => classroom.Name);
             Map(classroom => classroom.Desks);
 
-            References(classroom => classroom.Teacher);
-            HasMany(classroom => classroom.Students);
+            //http://stackoverflow.com/questions/6085568/how-to-do-a-fluent-nhibernate-one-to-one-mapping
+            HasOne(classroom => classroom.Teacher).Cascade.All();
+            HasMany(classroom => classroom.Students).Cascade.SaveUpdate();
         }
     }
 }

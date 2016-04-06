@@ -13,6 +13,12 @@ namespace Enterprise.Web.Controllers
     {
         public IClassroomService ClassroomService { get; set; }
 
+        // Needed for unit testing
+        public ClassroomController(IClassroomService classroomService)
+        {
+            ClassroomService = classroomService;
+        }
+
         /// <summary>
         /// Get student by id
         /// </summary>

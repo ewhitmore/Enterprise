@@ -5,7 +5,6 @@ namespace Enterprise.Model
     public abstract class EntityBase<T> where T : EntityBase<T>
     {
         public virtual int Id { get; set; }
-
         public virtual bool IsDeleted { get; set; } = false;
         public virtual DateTime CreatedAt { get; set; } = DateTime.Now;
         public virtual DateTime ModifiedAt { get; set; }
