@@ -27,7 +27,7 @@ namespace Enterprise.Web
             if (HttpContext.Current != null)
             {
                 // Indicates a web based implementation
-                builder.RegisterInstance(HibernateConfig.CreateSessionFactory("web"));
+                builder.RegisterInstance(HibernateConfig.CreateSessionFactory("SampleDatabase", "web"));
                 builder.Register(s => s.Resolve<ISessionFactory>().OpenSession()).InstancePerRequest();
 
             }
@@ -47,7 +47,6 @@ namespace Enterprise.Web
 
         }
 
-
         public static void RegisterAutofac(ISessionFactory sessionFactory)
         {
             var builder = new ContainerBuilder();
@@ -56,8 +55,8 @@ namespace Enterprise.Web
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
 
             // Either use a session in view model or per instance depending on the context.
-            builder.RegisterInstance(sessionFactory);
-            builder.Register(s => s.Resolve<ISessionFactory>().OpenSession());
+            builder.RegisterInstance(HibernateConfig.CreateSessionFactory(sessionFactory));
+            builder.Register(s => s.Resolve<ISessionFactory>().OpenSession()).InstancePerLifetimeScope();
             
 
             // Add Peristance Configuration

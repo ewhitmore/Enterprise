@@ -9,11 +9,11 @@ namespace Enterprise.Persistence.Dao.Mapping
         {
             DynamicUpdate(); // Hibernate will update the modified columns only.
             Id(x => x.Id).Column("Id"); // Numberic Id
-            Map(x => x.IsDeleted).Index("Index_IsDeleted");
+            Map(x => x.IsDeleted);
             // Id(x => x.Id).Column("Id").GeneratedBy.GuidComb(); // Guid Id
-            Map(x => x.CreatedAt).Index("Index_CreatedAt");
+            Map(x => x.CreatedAt);
             OptimisticLock.Version();
-            Version(x => x.ModifiedAt).CustomType("Timestamp").Index("Index_ModifiedAt");
+            Version(x => x.ModifiedAt).CustomType("Timestamp");
         }
     }
 }

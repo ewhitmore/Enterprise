@@ -2,7 +2,7 @@
 
 namespace Enterprise.Persistence.Dao.Mapping
 {
-    internal class StudentMap : EntityBaseMap<Student>
+    public class StudentMap : EntityBaseMap<Student>
     {
 
         public StudentMap()

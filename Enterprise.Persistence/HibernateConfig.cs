@@ -1,5 +1,4 @@
 ﻿using System.Configuration;
-using System.Diagnostics;
 using Enterprise.Persistence.Dao.Mapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -14,16 +13,20 @@ namespace Enterprise.Persistence
         public static ISessionFactory SessionFactory { get; private set; }
 
 
-        //SessionContext = "call";
-        //SessionContext = "thread_static";
-        //SessionContext = "web";
 
-        public static ISessionFactory CreateSessionFactory(string context)
+        /// <summary>
+        /// Creates a MsSql2012 session factory from connection string name
+        /// </summary>
+        /// <param name="connectionStringName"></param>
+        /// <param name="context">Context Can be call, thread_static or web. More information can be found 
+        /// <see href="http://nhibernate.info/doc/nhibernate-reference/architecture.html#architecture-current-session">here</see></param></param>
+        /// <returns></returns>
+        public static ISessionFactory CreateSessionFactory(string connectionStringName, string context)
         {
             var sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration
                     .MsSql2012
-                    .ConnectionString(c => c.FromConnectionStringWithKey("SampleDatabase")
+                    .ConnectionString(c => c.FromConnectionStringWithKey(connectionStringName)
                     )
                 .ShowSql()
                 // Turn this on for production only
@@ -44,30 +47,17 @@ namespace Enterprise.Persistence
             return sessionFactory;
         }
 
-        //public static ISessionFactory CreateSessionFactory(string context, string test)
-        //{
-        //    var sessionFactory = Fluently.Configure()
-        //        .Database(MsSqlConfiguration
-        //            .MsSql2012
-        //            .ConnectionString(c => c.FromConnectionStringWithKey("SampleDatabase")
-        //            )
-        //        .ShowSql()
-        //        // Turn this on for production only
-        //        //.UseReflectionOptimizer
-        //        )
-        //        .Mappings(m => m.FluentMappings.AddFromAssemblyOf<StudentMap>())
-        //        //.Mappings(m => m.FluentMappings.Add<LogMap>())
+        /// <summary>
+        /// Creates a session factory from a fully configured session factory
+        /// </summary>
+        /// <param name="sessionFactory"></param>
+        /// <returns></returns>
+        public static ISessionFactory CreateSessionFactory(ISessionFactory sessionFactory)
+        {
+            SessionFactory = sessionFactory;
 
-        //        // Comment out CreateSchema to keep nhibernate from removing the data each time.
-        //        .ExposeConfiguration(SchemaSelector)
-        //        //.ExposeConfiguration(cfg => cfg.SetInterceptor(new SqlStatementInterceptor()))
-        //        .ExposeConfiguration(cfg => cfg.SetProperty("current_session_context_class", SessionContext))
-        //        .ExposeConfiguration(cfg => cfg.SetProperty("adonet.batch_size", "100"))
-        //        .BuildConfiguration().BuildSessionFactory();
-
-        //    return sessionFactory;
-        //}
-
+            return sessionFactory;
+        }
 
         private static void SchemaSelector(Configuration cfg)
         {
@@ -89,7 +79,7 @@ namespace Enterprise.Persistence
             }
         }
 
-        internal static void Dispose()
+        public static void Dispose()
         {
             SessionFactory.Dispose();
         }
