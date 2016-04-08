@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Enterprise.Model;
+using TypeLite;
 
 namespace Enterprise.Web.Models
 {
+    [TsClass]
     public class ClassroomDto
     {
         public int Id { get; set; }

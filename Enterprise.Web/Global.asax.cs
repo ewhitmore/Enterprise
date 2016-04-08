@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using TypeLite;
+using TypeLite.Net4;
 
 namespace Enterprise.Web
 {
@@ -15,6 +17,8 @@ namespace Enterprise.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            TypeScript.Definitions().ForLoadedAssemblies();
         }
     }
 }

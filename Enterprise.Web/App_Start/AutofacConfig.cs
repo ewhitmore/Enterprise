@@ -15,6 +15,8 @@ namespace Enterprise.Web
     {
         public static IContainer Container { get; set; }
 
+
+
         public static void RegisterAutofac()
         {
             var builder = new ContainerBuilder();
@@ -22,10 +24,8 @@ namespace Enterprise.Web
             // Register Controllers
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
 
-            // Register NHibernate Factory
-            builder.RegisterInstance(HibernateConfig.InitHibernate("Web"));
-
-
+           
+            RegisterPersistanceLayer(builder);
 
             // Either use a session in view model or per instance depending on the context.
             if (HttpContext.Current != null)
@@ -40,12 +40,6 @@ namespace Enterprise.Web
                 builder.Register(s => s.Resolve<ISessionFactory>().OpenSession());
             }
 
-            // Add Nhibernate Repository
-            builder.RegisterGeneric(typeof(Repository<,>))
-                .As(typeof(IRepository<,>))
-                .PropertiesAutowired()
-                .InstancePerRequest();
-
             // Add Services
             AddServices(builder);
 
@@ -56,6 +50,18 @@ namespace Enterprise.Web
             Container = builder.Build();
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(Container);
 
+        }
+
+        public static void RegisterPersistanceLayer(ContainerBuilder builder)
+        {
+            // Register NHibernate Factory
+            builder.RegisterInstance(HibernateConfig.InitHibernate("Web"));
+
+            // Add Repository
+            builder.RegisterGeneric(typeof(Repository<,>))
+                .As(typeof(IRepository<,>))
+                .PropertiesAutowired()
+                .InstancePerRequest();
         }
 
         private static void AddTypes(ContainerBuilder builder)
