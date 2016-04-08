@@ -5,6 +5,7 @@ using System.Web.Http.Results;
 using Autofac.Extras.Moq;
 using Autofac.Integration.WebApi;
 using Enterprise.Model;
+using Enterprise.Persistence;
 using Enterprise.Web.Controllers;
 using Enterprise.Web.Models;
 using Enterprise.Web.Services;

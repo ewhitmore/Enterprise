@@ -12,34 +12,15 @@ namespace Enterprise.Persistence
     public class HibernateConfig
     {
         public static ISessionFactory SessionFactory { get; private set; }
-        public static string SessionContext { get; set; }
+
 
         //SessionContext = "call";
         //SessionContext = "thread_static";
         //SessionContext = "web";
 
-        /// <summary>
-        ///     Initalize Hibernate Factory
-        /// </summary>
-        /// <param name="context">Must be call, web or thread_static</param>
-        public static ISessionFactory InitHibernate(string context)
+        public static ISessionFactory CreateSessionFactory(string context)
         {
-            SessionContext = context;
-
-            Debug.WriteLine("Configuring NHibernate...");
-            Debug.WriteLine("Set Schema:" + ConfigurationManager.AppSettings["Schema"]);
-
-            var sessionFactory = CreateSessionFactory();
-            SessionFactory = sessionFactory;
-
-            Debug.WriteLine("Created NHibernate SessionFactories!");
-
-            return SessionFactory;
-        }
-
-        private static ISessionFactory CreateSessionFactory()
-        {
-            return Fluently.Configure()
+            var sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration
                     .MsSql2012
                     .ConnectionString(c => c.FromConnectionStringWithKey("SampleDatabase")
@@ -54,10 +35,39 @@ namespace Enterprise.Persistence
                 // Comment out CreateSchema to keep nhibernate from removing the data each time.
                 .ExposeConfiguration(SchemaSelector)
                 //.ExposeConfiguration(cfg => cfg.SetInterceptor(new SqlStatementInterceptor()))
-                .ExposeConfiguration(cfg => cfg.SetProperty("current_session_context_class", SessionContext))
+                .ExposeConfiguration(cfg => cfg.SetProperty("current_session_context_class", context))
                 .ExposeConfiguration(cfg => cfg.SetProperty("adonet.batch_size", "100"))
                 .BuildConfiguration().BuildSessionFactory();
+
+            SessionFactory = sessionFactory;
+
+            return sessionFactory;
         }
+
+        //public static ISessionFactory CreateSessionFactory(string context, string test)
+        //{
+        //    var sessionFactory = Fluently.Configure()
+        //        .Database(MsSqlConfiguration
+        //            .MsSql2012
+        //            .ConnectionString(c => c.FromConnectionStringWithKey("SampleDatabase")
+        //            )
+        //        .ShowSql()
+        //        // Turn this on for production only
+        //        //.UseReflectionOptimizer
+        //        )
+        //        .Mappings(m => m.FluentMappings.AddFromAssemblyOf<StudentMap>())
+        //        //.Mappings(m => m.FluentMappings.Add<LogMap>())
+
+        //        // Comment out CreateSchema to keep nhibernate from removing the data each time.
+        //        .ExposeConfiguration(SchemaSelector)
+        //        //.ExposeConfiguration(cfg => cfg.SetInterceptor(new SqlStatementInterceptor()))
+        //        .ExposeConfiguration(cfg => cfg.SetProperty("current_session_context_class", SessionContext))
+        //        .ExposeConfiguration(cfg => cfg.SetProperty("adonet.batch_size", "100"))
+        //        .BuildConfiguration().BuildSessionFactory();
+
+        //    return sessionFactory;
+        //}
+
 
         private static void SchemaSelector(Configuration cfg)
         {

@@ -15,30 +15,25 @@ namespace Enterprise.Web
     {
         public static IContainer Container { get; set; }
 
-
-
         public static void RegisterAutofac()
         {
+
             var builder = new ContainerBuilder();
 
             // Register Controllers
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
 
-           
-            RegisterPersistanceLayer(builder);
-
             // Either use a session in view model or per instance depending on the context.
             if (HttpContext.Current != null)
             {
                 // Indicates a web based implementation
+                builder.RegisterInstance(HibernateConfig.CreateSessionFactory("web"));
                 builder.Register(s => s.Resolve<ISessionFactory>().OpenSession()).InstancePerRequest();
 
             }
-            else
-            {
-                // Indicates unit test (or other non-web based implementation)
-                builder.Register(s => s.Resolve<ISessionFactory>().OpenSession());
-            }
+
+            // Add Peristance Configuration
+            RegisterPersistanceLayer(builder);
 
             // Add Services
             AddServices(builder);
@@ -52,11 +47,36 @@ namespace Enterprise.Web
 
         }
 
-        public static void RegisterPersistanceLayer(ContainerBuilder builder)
-        {
-            // Register NHibernate Factory
-            builder.RegisterInstance(HibernateConfig.InitHibernate("Web"));
 
+        public static void RegisterAutofac(ISessionFactory sessionFactory)
+        {
+            var builder = new ContainerBuilder();
+
+            // Register Controllers
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+
+            // Either use a session in view model or per instance depending on the context.
+            builder.RegisterInstance(sessionFactory);
+            builder.Register(s => s.Resolve<ISessionFactory>().OpenSession());
+            
+
+            // Add Peristance Configuration
+            RegisterPersistanceLayer(builder);
+
+            // Add Services
+            AddServices(builder);
+
+            // Add Types
+            AddTypes(builder);
+
+            // Set the dependency resolver to be Autofac.
+            Container = builder.Build();
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(Container);
+
+        }
+
+        private static void RegisterPersistanceLayer(ContainerBuilder builder)
+        {
             // Add Repository
             builder.RegisterGeneric(typeof(Repository<,>))
                 .As(typeof(IRepository<,>))

@@ -17,7 +17,7 @@ namespace Enterprise.Web.Controllers
         public IHttpActionResult Seed()
         {
             SeedService.Seed();
-            return Ok();
+            return Ok("DB Seeding Complete");
         }
 
     }

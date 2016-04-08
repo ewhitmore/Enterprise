@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Autofac.Extras.Moq;
 using Enterprise.Model;
+using Enterprise.Persistence;
 using Enterprise.Persistence.Dao;
 using Enterprise.Web.Models;
 using Enterprise.Web.Services;
