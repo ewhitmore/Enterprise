@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Autofac.Extras.Moq;
 using Enterprise.Model;
 using Enterprise.Web;
 using FluentNHibernate.Testing;
@@ -15,6 +12,9 @@ namespace Enterprise.Persistence.Tests.UnitTests
     [TestClass]
     public class MappingUnitTests
     {
+
+        // Nhibernate Mapping Unit Testing
+        // https://github.com/jagregory/fluent-nhibernate/wiki/Persistence-specification-testing
 
         public ISession Session { get; set; }
 
@@ -42,7 +42,7 @@ namespace Enterprise.Persistence.Tests.UnitTests
                 .CheckProperty(x => x.Id,1)
                 .CheckProperty(x => x.Birthday, new DateTime(2000,01,01))
                 .CheckProperty(x => x.FullName, "Eric Whitmore")
-                .CheckProperty(x => x.Classroom, new Classroom() {Name = "New Classroom"})
+                .CheckReference(x => x.Classroom, new Classroom() {Name = "New Classroom"})
                 .VerifyTheMappings();
         }
 
@@ -53,9 +53,8 @@ namespace Enterprise.Persistence.Tests.UnitTests
                 .CheckProperty(x => x.Id, 1)
                 .CheckProperty(x => x.Desks, 10)
                 .CheckProperty(x => x.Name, "East Class")
-                .CheckProperty(x => x.Teacher, GetTeacher())
+                .CheckReference(x => x.Teacher, GetTeacher())
                 .CheckList(x => x.Students, GetStudentList())
-
                 .VerifyTheMappings();
 
        
@@ -68,8 +67,7 @@ namespace Enterprise.Persistence.Tests.UnitTests
                 .CheckProperty(x => x.Id, 1)
                 .CheckProperty(x => x.Birthday, new DateTime(2000,01,01))
                 .CheckProperty(x => x.FullName, "Dr. Whitmore")
-
-
+                .CheckReference(x => x.Classroom, new Classroom() {Name = "New Class"})
                 .VerifyTheMappings();
         }
 
