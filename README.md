@@ -8,7 +8,7 @@ Enterprise Stack - No Security Implementation
  * AutoFac (IoC Container)
  * Fluent NHibernate (ORM Tool)
  * MsTest (Testing Framework)
-  * Sqlite - InMemory Database configuration
+  * Sqlite - InMemory Database configuration (Used in unit testing)
 * Client Side
  * Twitter Boostrap (Front-end framework HTML framework)
  * Typescript (Staticly typed, Class-based Transcompiler to JavaScript)
