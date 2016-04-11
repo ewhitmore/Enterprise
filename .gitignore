@@ -234,3 +234,10 @@ ModelManifest.xml
 /Enterprise.Web/app/widgets/widgets.module.js
 /Enterprise.Web/app/services/services.module.js.map
 /Enterprise.Web/app/services/services.module.js
+/Enterprise.Web/app/teacher/teacherDto.js.map
+/Enterprise.Web/app/teacher/teacherDto.js
+/Enterprise.Web/app/teacher/teacher.test.js.map
+/Enterprise.Web/app/teacher/teacher.test.js
+/Enterprise.Web/app/teacher/teacher.module.ts
+/Enterprise.Web/app/teacher/teacher.module.js.map
+/Enterprise.Web/app/teacher/teacher.module.js
