@@ -84,14 +84,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IntegrationTests\TeacherDaoIntegrationTests.cs" />
     <Compile Include="TestingSessionFactory.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTests\MappingUnitTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IntegrationTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Enterprise.Model\Enterprise.Model.csproj">
       <Project>{c7fbd3f0-a731-4f27-aac4-677a657a301a}</Project>

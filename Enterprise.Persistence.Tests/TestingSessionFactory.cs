@@ -15,7 +15,8 @@ namespace Enterprise.Persistence.Tests
         {
             var config = Fluently.Configure()
                 .Database(SQLiteConfiguration.Standard
-                    .ConnectionString("Data Source=:memory:;Version=3;New=True")
+                    .InMemory()
+                    //.ConnectionString("Data Source=:memory:;Version=3;New=True")
                     .Dialect<NHibernate.Dialect.SQLiteDialect>()
                     .Driver<NHibernate.Driver.SQLite20Driver>()
                     .ShowSql()

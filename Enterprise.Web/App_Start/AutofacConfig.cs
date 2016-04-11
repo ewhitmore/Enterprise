@@ -56,7 +56,7 @@ namespace Enterprise.Web
 
             // Either use a session in view model or per instance depending on the context.
             builder.RegisterInstance(HibernateConfig.CreateSessionFactory(sessionFactory));
-            builder.Register(s => s.Resolve<ISessionFactory>().OpenSession()).InstancePerLifetimeScope();
+            builder.Register(s => s.Resolve<ISessionFactory>().GetCurrentSession()).InstancePerLifetimeScope();
             
 
             // Add Peristance Configuration
