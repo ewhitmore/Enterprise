@@ -18,7 +18,7 @@ Enterprise Stack - No Security Implementation
  * Jasmine (Javascript/Typescript Testing Framework)
  
 ## Todos
-*~~Setup Jasmine for Typescript~~
+* ~~Setup Jasmine for Typescript~~
 * Create working unit test which uses AngularJs
 * Client Side CRUD operations w/ testing 
 * ~~Setup Unit Tests for Persistance Layer (i.e. NHibernate Mappings/Operations)~~
