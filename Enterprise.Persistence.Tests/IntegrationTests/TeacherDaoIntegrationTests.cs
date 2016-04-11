@@ -6,7 +6,6 @@ using Enterprise.Model;
 using Enterprise.Persistence.Dao;
 using Enterprise.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NHibernate;
 using NHibernate.Context;
 
 namespace Enterprise.Persistence.Tests.IntegrationTests
