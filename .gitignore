@@ -241,3 +241,5 @@ ModelManifest.xml
 /Enterprise.Web/app/teacher/teacher.module.ts
 /Enterprise.Web/app/teacher/teacher.module.js.map
 /Enterprise.Web/app/teacher/teacher.module.js
+/Enterprise.Web/app/teacher/teacher.service.js.map
+/Enterprise.Web/app/teacher/teacher.service.js

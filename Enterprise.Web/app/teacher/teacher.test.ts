@@ -6,10 +6,10 @@ module App.Teacher {
 
     describe("TeacherDto", () => {
 
-        var teacher: ITeacherDao;
+        var teacher: ITeacherDto;
         var birthday = new Date("2016-01-15");
         beforeEach(() => {
-            teacher = new TeacherDao();
+            teacher = new TeacherDto();
             teacher.id = 1;
             teacher.fullname = "John Doe";
             teacher.birthday = birthday;

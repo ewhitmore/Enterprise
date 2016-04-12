@@ -1,13 +1,13 @@
 ﻿module App.Teacher {
     "use strict";
 
-    export interface ITeacherDao {
+    export interface ITeacherDto {
         id: number;
         fullname: string;
         birthday: Date;
     }
 
-    export class TeacherDao implements ITeacherDao {
+    export class TeacherDto implements ITeacherDto {
         id: number;
         fullname: string;
         birthday: Date;
