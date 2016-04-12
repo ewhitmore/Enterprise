@@ -1,5 +1,5 @@
 ﻿module App {
-    'use strict';
+    "use strict";
 
     angular
         .module('app', [
@@ -12,7 +12,8 @@
             ,'app.blocks'
 
             // Feature Modules
-          
+            , 'app.teacher' 
+            
 
   
         ]);

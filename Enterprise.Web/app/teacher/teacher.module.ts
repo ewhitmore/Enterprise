@@ -1,5 +1,5 @@
 ﻿module App.Teacher {
-    'use strict';
+    "use strict";
 
     angular.module('app.teacher', []);
 }

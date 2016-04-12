@@ -13,7 +13,6 @@
 
 </head>
 <body>
-
     <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="app.layout.navigationController as vm">
         <div class="container">
             <div class="navbar-header">
@@ -36,7 +35,6 @@
     <div class="container">
         <div ng-view></div>
     </div>
-
 
     <!-- Libs -->
     <script src="Scripts/jquery-2.2.2.js"></script>
@@ -72,12 +70,10 @@
     <!--WIDGETS-->
     <script src="app/widgets/widgets.module.js"></script>
 
-    <!--MODELS-->
-
-
     <!--FEATURES-->
-
-
+    <script src="app/teacher/teacherDto.js"></script>
+    <script src="app/teacher/teacher.module.js"></script>
+    <script src="app/teacher/teacher.service.js"></script>
 
 </body>
 </html>

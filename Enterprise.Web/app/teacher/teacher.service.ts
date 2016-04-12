@@ -1,5 +1,5 @@
 ﻿module App.Teacher {
-    'use strict';
+    "use strict";
 
     export interface ITeacherService {
         getAll(): angular.IPromise<Teacher.ITeacherDto[]>;
@@ -10,7 +10,7 @@
 
         getAll(): angular.IPromise<Teacher.ITeacherDto[]> {
             return this.$http
-                .get(this.apiEndpoint.baseUrl + 'v1/teacher')
+                .get(this.apiEndpoint.baseUrl + '/v1/teacher/GetAll')
                 .then((response: angular.IHttpPromiseCallbackArg<ITeacherDto[]>): ITeacherDto[] => {
                     return response.data;
                 });
