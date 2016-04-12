@@ -11,9 +11,5 @@
         id: number;
         fullname: string;
         birthday: Date;
-
-        //constructor() {
-            
-        //}
     }
 }
