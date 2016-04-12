@@ -1,18 +1,19 @@
 ﻿module App.Teacher {
+    "use strict";
 
-    export interface ITeacher {
-        getFullName():string;
+    export interface ITeacherDao {
+        id: number;
+        fullname: string;
+        birthday: Date;
     }
 
-    class Teacher implements ITeacher {
+    export class TeacherDao implements ITeacherDao {
+        id: number;
+        fullname: string;
+        birthday: Date;
 
-        private id: number;
-        private fullname: string;
-        private birthday: Date;
-
-        getFullName(): string {
-            return this.fullname;
-        }
+        //constructor() {
+            
+        //}
     }
-
 }
