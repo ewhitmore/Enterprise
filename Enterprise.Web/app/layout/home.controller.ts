@@ -1,35 +1,35 @@
 ﻿module App.Layout {
     'use strict';
 
-    import Teacher = App.Teacher.ITeacherDto;
-
     interface IHomeScope {
         // Properties
-        fullname: string;
-        teachers: Teacher[];
+        students: Student.IStudentDto[];
 
         // Methods
-        getall():angular.IPromise<Teacher[]>;
-      
+        getAllStudents(): void;
+        save(student: Student.IStudentDto): void;
     }
 
     class HomeController implements IHomeScope {
+        students: Student.IStudentDto[];
 
-        fullname: string;
-        teachers: Teacher[];
-
-        static $inject = ['app.teacher.teacherService'];
-        constructor(private teacherService: App.Teacher.ITeacherService) {
+        static $inject = ['app.student.studentService'];
+        constructor(private studentService: Student.IStudentService) {
             var vm = this;
 
-            vm.fullname = "Eric Whitmore";
-            vm.getall().then(results => {
-                vm.teachers = results;
+            vm.getAllStudents();
+        }
+
+        getAllStudents(): void {
+            this.studentService.getAll().then(students => {
+                this.students = students;
             });
         }
 
-        getall(): angular.IPromise<App.Teacher.ITeacherDto[]> {
-            return this.teacherService.getAll();
+        save(student: Student.IStudentDto): void {
+            this.studentService.save(student).then(() => {
+                this.getAllStudents();
+            });
         }
     }
 

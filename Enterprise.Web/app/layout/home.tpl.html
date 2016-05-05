@@ -19,22 +19,22 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Created</th>
-            <th>Description</th>
+            <th>Name</th>
+            <th>Birthday</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-            <!--<tr>
+            <tr>
                 <td></td>
-                <td></td>
-                <td><input class="form-control" type="text" ng-model="vm.newLog.description"/></td>
-                <td><button class="btn btn-primary" ng-click="vm.insert(vm.newLog)">Add</button></td>
-            </tr>-->
-            <tr ng-repeat="teacher in vm.teachers">
-                <td>{{teacher.id}}</td>
-                <td>{{teacher.fullName}}</td>
-                <td>{{teacher.birthday | date:'medium'}}</td>
+                <td><input class="form-control" type="text" ng-model="vm.newStudent.fullname" /></td>
+                <td><input class="form-control" type="date" ng-model="vm.newStudent.birthday"/></td>
+                <td><button class="btn btn-primary" ng-click="vm.save(vm.newStudent)">Add</button></td>
+            </tr>
+            <tr ng-repeat="student in vm.students">
+                <td>{{student.id}}</td>
+                <td>{{student.fullName}}</td>
+                <td>{{student.birthday | date:'shortDate'}}</td>
                 <td></td>
             </tr>
         </tbody>

@@ -1074,10 +1074,15 @@
     <TypeScriptCompile Include="app\blocks\apiendpoint.config.ts" />
     <TypeScriptCompile Include="app\blocks\apiendpoint.provider.ts" />
     <TypeScriptCompile Include="app\blocks\blocks.module.ts" />
+    <TypeScriptCompile Include="app\classroom\classroom.module.ts" />
+    <TypeScriptCompile Include="app\classroom\classroomDto.ts" />
     <TypeScriptCompile Include="app\layout\home.controller.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\layout\navigation.controller.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />
+    <TypeScriptCompile Include="app\student\student.module.ts" />
+    <TypeScriptCompile Include="app\student\student.service.ts" />
+    <TypeScriptCompile Include="app\student\studentDto.ts" />
     <TypeScriptCompile Include="app\teacher\teacher.module.ts" />
     <TypeScriptCompile Include="app\teacher\teacher.service.ts" />
     <TypeScriptCompile Include="app\teacher\teacher.test.ts" />

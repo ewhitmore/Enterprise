@@ -12,7 +12,8 @@
             ,'app.blocks'
 
             // Feature Modules
-            , 'app.teacher' 
+            , 'app.teacher'
+            , 'app.student'
             
 
   
